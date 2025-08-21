@@ -2,23 +2,25 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
+// Import context
+import { LanguageProvider } from '../../contexts/LanguageContext';
+
 // Import types
 import { FilterType } from './types';
 
 // Import components
 import Navigation from './Navigation/Navigation';
 import HeroSection from './Hero/HeroSection';
-
 import AboutSection from "./About/AboutSection";
-import  MenuSection  from './Menu/MenuSection';
-import  GallerySection  from './Gallery/GallerySection';
-import  MapSection  from './Map/MapSection';
+import MenuSection from './Menu/MenuSection';
+import GallerySection from './Gallery/GallerySection';
+import MapSection from './Map/MapSection';
 import HoursSection from './Hours/HoursSection';
-import  ContactSection from './Contact/ContactSection';
+import ContactSection from './Contact/ContactSection';
 import Footer from './Footer/Footer';
 import ScrollToTopButton from './ScrollToTop/ScrollToTopButton';
 
-const LaBriocheBlanche: React.FC = () => {
+const LaBriocheBlancheContent: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('all');
     const [isFormSubmitting, setIsFormSubmitting] = useState<boolean>(false);
     const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
@@ -80,6 +82,14 @@ const LaBriocheBlanche: React.FC = () => {
             <Footer scrollToSection={scrollToSection} />
             <ScrollToTopButton showScrollTop={showScrollTop} />
         </div>
+    );
+};
+
+const LaBriocheBlanche: React.FC = () => {
+    return (
+        <LanguageProvider>
+            <LaBriocheBlancheContent />
+        </LanguageProvider>
     );
 };
 

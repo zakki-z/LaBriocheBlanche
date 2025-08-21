@@ -1,11 +1,16 @@
+// components/LaBriocheBlanche/Hero/HeroSection.tsx
+"use client"
 import React from 'react';
 import { Cake, Utensils } from 'lucide-react';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 interface HeroSectionProps {
     scrollToSection: (sectionId: string) => void;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
+    const { t, isRTL } = useLanguage();
+
     const backgroundPattern = `data:image/svg+xml,${encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
       <circle cx="20" cy="20" r="2" fill="rgba(139,69,19,0.1)"></circle>
@@ -25,25 +30,29 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
             ></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
+                <div className={`grid lg:grid-cols-2 gap-12 items-center ${
+                    isRTL ? 'lg:grid-cols-2' : ''
+                }`}>
+                    <div className={`space-y-8 ${isRTL ? 'lg:order-2 text-right' : ''}`}>
                         <h1 className="font-serif text-4xl lg:text-6xl font-bold text-amber-900 leading-tight">
-                            La Brioche Blanche
+                            {t('hero.title')}
                         </h1>
                         <p className="text-lg lg:text-xl text-amber-800 leading-relaxed">
-                            La Brioche Blanche a ouvert ses portes en 2015 offrant à ses clients la meilleure qualité de boulangerie, une cuisine savoureuse et un si joli café.
+                            {t('hero.description')}
                         </p>
                         <button
                             onClick={() => scrollToSection('about')}
-                            className="inline-flex items-center space-x-2 bg-amber-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-700 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+                            className={`inline-flex items-center space-x-2 bg-amber-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-700 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl ${
+                                isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                            }`}
                             type="button"
                         >
                             <Utensils className="w-5 h-5" />
-                            <span>À propos de nous</span>
+                            <span>{t('hero.cta')}</span>
                         </button>
                     </div>
 
-                    <div className="flex justify-center">
+                    <div className={`flex justify-center ${isRTL ? 'lg:order-1' : ''}`}>
                         <Cake className="w-60 h-60 text-amber-900/30 animate-bounce" />
                     </div>
                 </div>

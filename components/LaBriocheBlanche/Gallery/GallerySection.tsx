@@ -1,10 +1,14 @@
 // components/LaBriocheBlanche/Gallery/GallerySection.tsx
+"use client"
 import React from 'react';
 import { Store, Coffee, Cake, Cookie, Users } from 'lucide-react';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import GalleryItem from './GalleryItem';
 import { GalleryItemData } from '../types';
 
 const GallerySection: React.FC = () => {
+    const { t, isRTL } = useLanguage();
+
     const galleryItems: GalleryItemData[] = [
         { id: 1, icon: Store, gradient: 'from-amber-900 to-orange-700' },
         { id: 2, icon: Coffee, gradient: 'from-orange-700 to-orange-400' },
@@ -17,8 +21,10 @@ const GallerySection: React.FC = () => {
     return (
         <section id="gallery" className="py-20 bg-yellow-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="font-serif text-3xl lg:text-4xl font-bold text-center text-amber-900 mb-16">
-                    Galerie
+                <h2 className={`font-serif text-3xl lg:text-4xl font-bold text-center text-amber-900 mb-16 ${
+                    isRTL ? 'text-right' : ''
+                }`}>
+                    {t('gallery.title')}
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

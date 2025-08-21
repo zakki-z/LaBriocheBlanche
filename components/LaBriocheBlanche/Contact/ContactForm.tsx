@@ -2,6 +2,7 @@
 "use client"
 import React, { useState, useRef } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import emailjs from '@emailjs/browser';
 
 interface FormData {
@@ -21,16 +22,29 @@ const EMAILJS_CONFIG = {
 };
 
 const ContactForm: React.FC = () => {
+    const { t, isRTL } = useLanguage();
     const formRef = useRef<HTMLFormElement>(null);
+
     const [formData, setFormData] = useState<FormData>({
         email: '',
         phone: '',
-        inquiry: 'Demande Générale',
+        inquiry: t('contact.form.inquiryTypes.general'),
         message: ''
     });
 
     const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>('idle');
     const [errorMessage, setErrorMessage] = useState<string>('');
+
+    const inquiryTypes = [
+        { key: 'general', labelKey: 'contact.form.inquiryTypes.general' },
+        { key: 'catering', labelKey: 'contact.form.inquiryTypes.catering' },
+        { key: 'bakery', labelKey: 'contact.form.inquiryTypes.bakery' },
+        { key: 'pastry', labelKey: 'contact.form.inquiryTypes.pastry' },
+        { key: 'coffee', labelKey: 'contact.form.inquiryTypes.coffee' },
+        { key: 'event', labelKey: 'contact.form.inquiryTypes.event' },
+        { key: 'delivery', labelKey: 'contact.form.inquiryTypes.delivery' },
+        { key: 'feedback', labelKey: 'contact.form.inquiryTypes.feedback' }
+    ];
 
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -94,7 +108,7 @@ const ContactForm: React.FC = () => {
                 setFormData({
                     email: '',
                     phone: '',
-                    inquiry: 'Demande Générale',
+                    inquiry: t('contact.form.inquiryTypes.general'),
                     message: ''
                 });
                 setSubmissionStatus('idle');
@@ -125,35 +139,37 @@ const ContactForm: React.FC = () => {
                 return (
                     <>
                         <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
-                        <span>Envoi en cours...</span>
+                        <span>{t('contact.form.sending')}</span>
                     </>
                 );
             case 'success':
                 return (
                     <>
                         <CheckCircle className="w-5 h-5" />
-                        <span>Message envoyé!</span>
+                        <span>{t('contact.form.sent')}</span>
                     </>
                 );
             case 'error':
                 return (
                     <>
                         <AlertCircle className="w-5 h-5" />
-                        <span>Réessayer</span>
+                        <span>{t('contact.form.retry')}</span>
                     </>
                 );
             default:
                 return (
                     <>
                         <Send className="w-5 h-5" />
-                        <span>Envoyer le message</span>
+                        <span>{t('contact.form.send')}</span>
                     </>
                 );
         }
     };
 
     const getButtonStyles = () => {
-        const baseStyles = "w-full py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50";
+        const baseStyles = `w-full py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 ${
+            isRTL ? 'flex-row-reverse space-x-reverse' : ''
+        }`;
 
         switch (submissionStatus) {
             case 'success':
@@ -167,16 +183,22 @@ const ContactForm: React.FC = () => {
 
     return (
         <div className="bg-white rounded-2xl p-8">
-            <h4 className="text-xl font-semibold text-amber-900 mb-6">Envoyez-nous un message</h4>
+            <h4 className={`text-xl font-semibold text-amber-900 mb-6 ${
+                isRTL ? 'text-right' : ''
+            }`}>
+                {t('contact.form.title')}
+            </h4>
 
             {/* Configuration Warning */}
             {EMAILJS_CONFIG.SERVICE_ID === 'your_service_id' && (
                 <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <div className="flex items-center space-x-2">
+                    <div className={`flex items-center space-x-2 ${
+                        isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
                         <AlertCircle className="w-5 h-5 text-yellow-600" />
                         <p className="text-yellow-700 font-medium">Configuration requise</p>
                     </div>
-                    <p className="text-yellow-600 text-sm mt-1">
+                    <p className={`text-yellow-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
                         Veuillez configurer EmailJS pour activer l'envoi d'emails.
                         <br />
                         <a
@@ -194,14 +216,16 @@ const ContactForm: React.FC = () => {
             {/* Success Message */}
             {submissionStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <div className="flex items-center space-x-2">
+                    <div className={`flex items-center space-x-2 ${
+                        isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         <p className="text-green-700 font-medium">
-                            Merci! Votre message a été envoyé avec succès.
+                            {t('contact.form.success')}
                         </p>
                     </div>
-                    <p className="text-green-600 text-sm mt-1">
-                        Nous vous répondrons dans les plus brefs délais à {formData.email}.
+                    <p className={`text-green-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
+                        {t('contact.form.successSubtext')} {formData.email}.
                     </p>
                 </div>
             )}
@@ -209,11 +233,15 @@ const ContactForm: React.FC = () => {
             {/* Error Message */}
             {submissionStatus === 'error' && errorMessage && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <div className="flex items-center space-x-2">
+                    <div className={`flex items-center space-x-2 ${
+                        isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
                         <AlertCircle className="w-5 h-5 text-red-600" />
-                        <p className="text-red-700 font-medium">Erreur d'envoi</p>
+                        <p className="text-red-700 font-medium">{t('contact.form.error')}</p>
                     </div>
-                    <p className="text-red-600 text-sm mt-1">{errorMessage}</p>
+                    <p className={`text-red-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
+                        {errorMessage}
+                    </p>
                 </div>
             )}
 
@@ -223,8 +251,10 @@ const ContactForm: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Votre email *"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none"
+                    placeholder={`${t('contact.form.email')} *`}
+                    className={`w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none ${
+                        isRTL ? 'text-right' : ''
+                    }`}
                     required
                     disabled={submissionStatus === 'submitting'}
                 />
@@ -235,25 +265,26 @@ const ContactForm: React.FC = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="Numéro de téléphone"
-                        className="px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none"
+                        placeholder={t('contact.form.phone')}
+                        className={`px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none ${
+                            isRTL ? 'text-right' : ''
+                        }`}
                         disabled={submissionStatus === 'submitting'}
                     />
                     <select
                         name="inquiry"
                         value={formData.inquiry}
                         onChange={handleInputChange}
-                        className="px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none"
+                        className={`px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none ${
+                            isRTL ? 'text-right' : ''
+                        }`}
                         disabled={submissionStatus === 'submitting'}
                     >
-                        <option value="Demande Générale">Demande Générale</option>
-                        <option value="Restauration">Restauration</option>
-                        <option value="Boulangerie">Boulangerie</option>
-                        <option value="Pâtisserie">Pâtisserie</option>
-                        <option value="Café">Café</option>
-                        <option value="Événement Privé">Événement Privé</option>
-                        <option value="Livraison">Livraison</option>
-                        <option value="Feedback">Feedback</option>
+                        {inquiryTypes.map((type) => (
+                            <option key={type.key} value={t(type.labelKey)}>
+                                {t(type.labelKey)}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -262,8 +293,10 @@ const ContactForm: React.FC = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={5}
-                    placeholder="Votre message *"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none resize-none"
+                    placeholder={`${t('contact.form.message')} *`}
+                    className={`w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-amber-900 focus:border-transparent outline-none resize-none ${
+                        isRTL ? 'text-right' : ''
+                    }`}
                     required
                     disabled={submissionStatus === 'submitting'}
                 />
@@ -278,9 +311,11 @@ const ContactForm: React.FC = () => {
             </form>
 
             {/* Contact Info Footer */}
-            <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+            <div className={`mt-6 pt-6 border-t border-gray-200 text-center ${
+                isRTL ? 'text-right' : ''
+            }`}>
                 <p className="text-gray-600 text-sm">
-                    Ou appelez-nous directement au{' '}
+                    {t('contact.form.callDirect')}{' '}
                     <a
                         href="tel:+2125365004931"
                         className="text-amber-900 font-semibold hover:underline"

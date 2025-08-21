@@ -1,0 +1,858 @@
+{
+  "fr": {
+    "navigation": {
+      "home": "Accueil",
+      "about": "À propos de nous",
+      "menu": "Menu",
+      "gallery": "Galerie",
+      "location": "Localisation",
+      "hours": "Horaires d'ouverture",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "La Brioche Blanche",
+      "description": "La Brioche Blanche a ouvert ses portes en 2015 offrant à ses clients la meilleure qualité de boulangerie, une cuisine savoureuse et un si joli café.",
+      "cta": "À propos de nous"
+    },
+    "about": {
+      "title": "À Propos De Nous",
+      "cards": {
+        "since2015": {
+          "title": "Depuis 2015",
+          "description": "Depuis que La Brioche Blanche a ouvert ses portes en 2015, c'est toujours le premier endroit auquel nos clients pensent, qu'ils souhaitent offrir une pâtisserie à leur famille ou passer un bon moment avec leurs proches."
+        },
+        "freshNatural": {
+          "title": "Frais et Naturel",
+          "description": "Offrant la meilleure qualité dans son produit, La Brioche Blanche sélectionne ses ingrédients avec le plus grand soin pour garantir qu'ils sont frais et naturels"
+        },
+        "community": {
+          "title": "Axé sur la Communauté",
+          "description": "La Brioche Blanche est plus qu'une boulangerie - nous sommes un lieu de rassemblement où les voisins deviennent amis autour de bons plats et du café."
+        }
+      }
+    },
+    "menu": {
+      "title": "Nos Meilleurs Choix",
+      "subtitle": "Découvrez notre sélection des produits les plus appréciés par nos clients. Des saveurs authentiques qui font la réputation de La Brioche Blanche.",
+      "seeAll": "Voir tout le menu",
+      "articles": "articles",
+      "fullMenu": "Menu Complet",
+      "filters": {
+        "all": "Tout",
+        "breakfast": "Petit Déjeuner",
+        "drinks": "Boissons",
+        "pastry": "Pâtisserie",
+        "dishes": "Plats"
+      },
+      "items": {
+        "frenchBreakfast": {
+          "name": "Petit Déjeuner Français",
+          "description": "Croissant, confiture, beurre, café ou thé"
+        },
+        "continentalBreakfast": {
+          "name": "Petit Déjeuner Continental",
+          "description": "Pain, fromage, œuf, jus d'orange"
+        },
+        "completeBreakfast": {
+          "name": "Petit Déjeuner Complet",
+          "description": "Croissant, pain, confiture, fromage, œuf, boisson"
+        },
+        "msemenHoney": {
+          "name": "Msemen au Miel",
+          "description": "Msemen traditionnel servi avec miel et beurre"
+        },
+        "fruitCrepes": {
+          "name": "Crêpes aux Fruits",
+          "description": "Crêpes fraîches avec fruits de saison"
+        },
+        "chebakia": {
+          "name": "Chebakia Maison",
+          "description": "Pâtisserie traditionnelle au miel et sésame"
+        },
+        "espresso": {
+          "name": "Café Espresso",
+          "description": "Café italien servi dans une tasse traditionnelle"
+        },
+        "cappuccino": {
+          "name": "Cappuccino",
+          "description": "Espresso avec mousse de lait onctueuse"
+        },
+        "mintTea": {
+          "name": "Thé à la Menthe",
+          "description": "Thé vert traditionnel marocain à la menthe fraîche"
+        },
+        "freshOrange": {
+          "name": "Jus d'Orange Frais",
+          "description": "Jus d'orange pressé minute"
+        },
+        "fruitSmoothie": {
+          "name": "Smoothie aux Fruits",
+          "description": "Mélange de fruits frais et yaourt"
+        },
+        "vanillaMilkshake": {
+          "name": "Milkshake Vanille",
+          "description": "Milkshake crémeux à la vanille"
+        },
+        "butterCroissant": {
+          "name": "Croissant au Beurre",
+          "description": "Croissant français classique fait maison"
+        },
+        "painChocolat": {
+          "name": "Pain au Chocolat",
+          "description": "Viennoiserie feuilletée au chocolat"
+        },
+        "chocolateEclair": {
+          "name": "Éclair au Chocolat",
+          "description": "Pâte à choux garnie de crème pâtissière et glaçage chocolat"
+        },
+        "milleFeuille": {
+          "name": "Mille-feuille",
+          "description": "Pâte feuilletée et crème pâtissière vanille"
+        },
+        "fruitTart": {
+          "name": "Tarte aux Fruits",
+          "description": "Tarte sablée garnie de fruits frais de saison"
+        },
+        "chouquettes": {
+          "name": "Chouquettes",
+          "description": "Petits choux sucrés aux perles de sucre"
+        },
+        "caesarSalad": {
+          "name": "Salade César",
+          "description": "Salade verte, poulet grillé, parmesan, croutons"
+        },
+        "clubSandwich": {
+          "name": "Sandwich Club",
+          "description": "Pain de mie, poulet, bacon, salade, tomate"
+        },
+        "margheritaPizza": {
+          "name": "Pizza Margherita",
+          "description": "Sauce tomate, mozzarella, basilic frais"
+        },
+        "carbonaraPasta": {
+          "name": "Pâtes Carbonara",
+          "description": "Spaghetti, lardons, œuf, parmesan, crème"
+        },
+        "briocheBurger": {
+          "name": "Burger Brioche",
+          "description": "Pain brioche, steak haché, fromage, légumes"
+        },
+        "quicheLorraine": {
+          "name": "Quiche Lorraine",
+          "description": "Pâte brisée, lardons, œufs, crème fraîche"
+        }
+      },
+      "orderCall": "Pour commander, appelez-nous au",
+      "closeMenu": "Fermer le menu",
+      "topPick": "TOP PICK"
+    },
+    "gallery": {
+      "title": "Galerie"
+    },
+    "map": {
+      "title": "Trouvez-nous",
+      "viewDirections": "Voir l'itinéraire sur Google Maps",
+      "location": "Emplacement",
+      "phone": "Téléphone",
+      "email": "Email",
+      "parking": "Parking",
+      "parkingAvailable": "Parking disponible à proximité"
+    },
+    "hours": {
+      "title": "Horaires d'ouverture",
+      "open": "Nous sommes ouverts",
+      "days": {
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "weekend": "Samedi - Dimanche"
+      },
+      "times": {
+        "weekday": "7:00 AM - 11:00 PM",
+        "weekend": "7:00 AM - 12:00 PM"
+      },
+      "info": "Horaires prolongés pendant les vacances et les événements spéciaux"
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "visitUs": "Visitez-nous",
+      "callUs": "Appelez-nous",
+      "emailUs": "Envoyez-nous un e-mail",
+      "form": {
+        "title": "Envoyez-nous un message",
+        "email": "Votre email",
+        "phone": "Numéro de téléphone",
+        "inquiry": "Type de demande",
+        "message": "Votre message",
+        "send": "Envoyer le message",
+        "sending": "Envoi en cours...",
+        "sent": "Message envoyé!",
+        "retry": "Réessayer",
+        "inquiryTypes": {
+          "general": "Demande Générale",
+          "catering": "Restauration",
+          "bakery": "Boulangerie",
+          "pastry": "Pâtisserie",
+          "coffee": "Café",
+          "event": "Événement Privé",
+          "delivery": "Livraison",
+          "feedback": "Feedback"
+        },
+        "success": "Merci! Votre message a été envoyé avec succès.",
+        "successSubtext": "Nous vous répondrons dans les plus brefs délais à",
+        "error": "Erreur d'envoi",
+        "callDirect": "Ou appelez-nous directement au"
+      }
+    },
+    "footer": {
+      "tagline": "Créer de délicieux souvenirs.",
+      "quickLinks": "Liens Rapides",
+      "followUs": "Suivez-Nous",
+      "copyright": "Tous droits réservés."
+    }
+  },
+  "en": {
+    "navigation": {
+      "home": "Home",
+      "about": "About Us",
+      "menu": "Menu",
+      "gallery": "Gallery",
+      "location": "Location",
+      "hours": "Opening Hours",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "La Brioche Blanche",
+      "description": "La Brioche Blanche opened its doors in 2015, offering our customers the finest quality bakery goods, delicious cuisine, and beautiful coffee.",
+      "cta": "About Us"
+    },
+    "about": {
+      "title": "About Us",
+      "cards": {
+        "since2015": {
+          "title": "Since 2015",
+          "description": "Since La Brioche Blanche opened its doors in 2015, it's always the first place our customers think of, whether they want to treat their family to pastries or spend quality time with loved ones."
+        },
+        "freshNatural": {
+          "title": "Fresh & Natural",
+          "description": "Offering the best quality in our products, La Brioche Blanche carefully selects its ingredients to ensure they are fresh and natural."
+        },
+        "community": {
+          "title": "Community Focused",
+          "description": "La Brioche Blanche is more than a bakery - we're a gathering place where neighbors become friends over great food and coffee."
+        }
+      }
+    },
+    "menu": {
+      "title": "Our Top Picks",
+      "subtitle": "Discover our selection of products most loved by our customers. Authentic flavors that make La Brioche Blanche's reputation.",
+      "seeAll": "See Full Menu",
+      "articles": "items",
+      "fullMenu": "Complete Menu",
+      "filters": {
+        "all": "All",
+        "breakfast": "Breakfast",
+        "drinks": "Drinks",
+        "pastry": "Pastry",
+        "dishes": "Main Dishes"
+      },
+      "items": {
+        "frenchBreakfast": {
+          "name": "French Breakfast",
+          "description": "Croissant, jam, butter, coffee or tea"
+        },
+        "continentalBreakfast": {
+          "name": "Continental Breakfast",
+          "description": "Bread, cheese, egg, orange juice"
+        },
+        "completeBreakfast": {
+          "name": "Complete Breakfast",
+          "description": "Croissant, bread, jam, cheese, egg, beverage"
+        },
+        "msemenHoney": {
+          "name": "Msemen with Honey",
+          "description": "Traditional msemen served with honey and butter"
+        },
+        "fruitCrepes": {
+          "name": "Fruit Crepes",
+          "description": "Fresh crepes with seasonal fruits"
+        },
+        "chebakia": {
+          "name": "Homemade Chebakia",
+          "description": "Traditional honey and sesame pastry"
+        },
+        "espresso": {
+          "name": "Espresso Coffee",
+          "description": "Italian coffee served in a traditional cup"
+        },
+        "cappuccino": {
+          "name": "Cappuccino",
+          "description": "Espresso with creamy milk foam"
+        },
+        "mintTea": {
+          "name": "Mint Tea",
+          "description": "Traditional Moroccan green tea with fresh mint"
+        },
+        "freshOrange": {
+          "name": "Fresh Orange Juice",
+          "description": "Freshly squeezed orange juice"
+        },
+        "fruitSmoothie": {
+          "name": "Fruit Smoothie",
+          "description": "Blend of fresh fruits and yogurt"
+        },
+        "vanillaMilkshake": {
+          "name": "Vanilla Milkshake",
+          "description": "Creamy vanilla milkshake"
+        },
+        "butterCroissant": {
+          "name": "Butter Croissant",
+          "description": "Classic homemade French croissant"
+        },
+        "painChocolat": {
+          "name": "Pain au Chocolat",
+          "description": "Chocolate-filled puff pastry"
+        },
+        "chocolateEclair": {
+          "name": "Chocolate Éclair",
+          "description": "Choux pastry filled with pastry cream and chocolate glaze"
+        },
+        "milleFeuille": {
+          "name": "Mille-feuille",
+          "description": "Puff pastry with vanilla pastry cream"
+        },
+        "fruitTart": {
+          "name": "Fruit Tart",
+          "description": "Shortbread tart topped with fresh seasonal fruits"
+        },
+        "chouquettes": {
+          "name": "Chouquettes",
+          "description": "Sweet choux pastry with pearl sugar"
+        },
+        "caesarSalad": {
+          "name": "Caesar Salad",
+          "description": "Green salad, grilled chicken, parmesan, croutons"
+        },
+        "clubSandwich": {
+          "name": "Club Sandwich",
+          "description": "White bread, chicken, bacon, lettuce, tomato"
+        },
+        "margheritaPizza": {
+          "name": "Margherita Pizza",
+          "description": "Tomato sauce, mozzarella, fresh basil"
+        },
+        "carbonaraPasta": {
+          "name": "Carbonara Pasta",
+          "description": "Spaghetti, bacon, egg, parmesan, cream"
+        },
+        "briocheBurger": {
+          "name": "Brioche Burger",
+          "description": "Brioche bun, beef patty, cheese, vegetables"
+        },
+        "quicheLorraine": {
+          "name": "Quiche Lorraine",
+          "description": "Shortcrust pastry, bacon, eggs, fresh cream"
+        }
+      },
+      "orderCall": "To order, call us at",
+      "closeMenu": "Close Menu",
+      "topPick": "TOP PICK"
+    },
+    "gallery": {
+      "title": "Gallery"
+    },
+    "map": {
+      "title": "Find Us",
+      "viewDirections": "View directions on Google Maps",
+      "location": "Location",
+      "phone": "Phone",
+      "email": "Email",
+      "parking": "Parking",
+      "parkingAvailable": "Parking available nearby"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "open": "We are open",
+      "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "weekend": "Saturday - Sunday"
+      },
+      "times": {
+        "weekday": "7:00 AM - 11:00 PM",
+        "weekend": "7:00 AM - 12:00 PM"
+      },
+      "info": "Extended hours during holidays and special events"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "visitUs": "Visit Us",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "form": {
+        "title": "Send us a message",
+        "email": "Your email",
+        "phone": "Phone number",
+        "inquiry": "Inquiry type",
+        "message": "Your message",
+        "send": "Send message",
+        "sending": "Sending...",
+        "sent": "Message sent!",
+        "retry": "Try again",
+        "inquiryTypes": {
+          "general": "General Inquiry",
+          "catering": "Catering",
+          "bakery": "Bakery",
+          "pastry": "Pastry",
+          "coffee": "Coffee",
+          "event": "Private Event",
+          "delivery": "Delivery",
+          "feedback": "Feedback"
+        },
+        "success": "Thank you! Your message has been sent successfully.",
+        "successSubtext": "We will respond to you shortly at",
+        "error": "Sending error",
+        "callDirect": "Or call us directly at"
+      }
+    },
+    "footer": {
+      "tagline": "Creating delicious memories.",
+      "quickLinks": "Quick Links",
+      "followUs": "Follow Us",
+      "copyright": "All rights reserved."
+    }
+  },
+  "ar": {
+    "navigation": {
+      "home": "الرئيسية",
+      "about": "من نحن",
+      "menu": "القائمة",
+      "gallery": "المعرض",
+      "location": "الموقع",
+      "hours": "ساعات العمل",
+      "contact": "اتصل بنا"
+    },
+    "hero": {
+      "title": "لا بريوش بلانش",
+      "description": "افتتحت لا بريوش بلانش أبوابها في عام 2015، لتقدم لعملائها أجود أنواع المخبوزات والمأكولات اللذيذة والقهوة الرائعة.",
+      "cta": "من نحن"
+    },
+    "about": {
+      "title": "من نحن",
+      "cards": {
+        "since2015": {
+          "title": "منذ 2015",
+          "description": "منذ أن افتتحت لا بريوش بلانش أبوابها في عام 2015، فهي دائماً المكان الأول الذي يفكر فيه عملاؤنا، سواء أرادوا تقديم الحلويات لعائلتهم أو قضاء وقت ممتع مع أحبائهم."
+        },
+        "freshNatural": {
+          "title": "طازج وطبيعي",
+          "description": "تقدم لا بريوش بلانش أفضل جودة في منتجاتها، حيث تختار مكوناتها بعناية فائقة لضمان أنها طازجة وطبيعية."
+        },
+        "community": {
+          "title": "محور المجتمع",
+          "description": "لا بريوش بلانش أكثر من مخبز - نحن مكان تجمع حيث يصبح الجيران أصدقاء حول الطعام الرائع والقهوة."
+        }
+      }
+    },
+    "menu": {
+      "title": "أفضل اختياراتنا",
+      "subtitle": "اكتشف مجموعتنا المختارة من المنتجات الأكثر حباً من قبل عملائنا. نكهات أصيلة تصنع سمعة لا بريوش بلانش.",
+      "seeAll": "عرض القائمة كاملة",
+      "articles": "عنصر",
+      "fullMenu": "القائمة الكاملة",
+      "filters": {
+        "all": "الكل",
+        "breakfast": "الإفطار",
+        "drinks": "المشروبات",
+        "pastry": "الحلويات",
+        "dishes": "الأطباق الرئيسية"
+      },
+      "items": {
+        "frenchBreakfast": {
+          "name": "إفطار فرنسي",
+          "description": "كرواسون، مربى، زبدة، قهوة أو شاي"
+        },
+        "continentalBreakfast": {
+          "name": "إفطار قاري",
+          "description": "خبز، جبن، بيض، عصير برتقال"
+        },
+        "completeBreakfast": {
+          "name": "إفطار كامل",
+          "description": "كرواسون، خبز، مربى، جبن، بيض، مشروب"
+        },
+        "msemenHoney": {
+          "name": "مسمن بالعسل",
+          "description": "مسمن تقليدي يُقدم مع العسل والزبدة"
+        },
+        "fruitCrepes": {
+          "name": "كريب بالفواكه",
+          "description": "كريب طازج مع فواكه الموسم"
+        },
+        "chebakia": {
+          "name": "شباكية منزلية",
+          "description": "حلوى تقليدية بالعسل والسمسم"
+        },
+        "espresso": {
+          "name": "قهوة إسبريسو",
+          "description": "قهوة إيطالية تُقدم في كوب تقليدي"
+        },
+        "cappuccino": {
+          "name": "كابتشينو",
+          "description": "إسبريسو مع رغوة الحليب الكريمية"
+        },
+        "mintTea": {
+          "name": "أتاي بالنعناع",
+          "description": "شاي أخضر مغربي تقليدي بالنعناع الطازج"
+        },
+        "freshOrange": {
+          "name": "عصير برتقال طازج",
+          "description": "عصير برتقال معصور طازج"
+        },
+        "fruitSmoothie": {
+          "name": "عصير فواكه مخلوط",
+          "description": "خليط من الفواكه الطازجة واللبن"
+        },
+        "vanillaMilkshake": {
+          "name": "ميلك شيك الفانيليا",
+          "description": "ميلك شيك كريمي بالفانيليا"
+        },
+        "butterCroissant": {
+          "name": "كرواسون بالزبدة",
+          "description": "كرواسون فرنسي كلاسيكي محلي الصنع"
+        },
+        "painChocolat": {
+          "name": "خبز بالشوكولاتة",
+          "description": "معجنات ورقية محشوة بالشوكولاتة"
+        },
+        "chocolateEclair": {
+          "name": "إكلير بالشوكولاتة",
+          "description": "عجينة شو محشوة بكريمة الحلواني وطلاء الشوكولاتة"
+        },
+        "milleFeuille": {
+          "name": "ميل فوي",
+          "description": "عجينة ورقية وكريمة الحلواني بالفانيليا"
+        },
+        "fruitTart": {
+          "name": "تارت الفواكه",
+          "description": "تارت مقرمش مغطى بالفواكه الطازجة الموسمية"
+        },
+        "chouquettes": {
+          "name": "شوكيت",
+          "description": "كعك شو صغير حلو مع لؤلؤ السكر"
+        },
+        "caesarSalad": {
+          "name": "سلطة قيصر",
+          "description": "سلطة خضراء، دجاج مشوي، بارميزان، خبز محمص"
+        },
+        "clubSandwich": {
+          "name": "ساندويش كلوب",
+          "description": "خبز أبيض، دجاج، لحم مقدد، خس، طماطم"
+        },
+        "margheritaPizza": {
+          "name": "بيتزا مارغريتا",
+          "description": "صلصة طماطم، موزاريلا، ريحان طازج"
+        },
+        "carbonaraPasta": {
+          "name": "مكرونة كاربونارا",
+          "description": "سباغيتي، لحم مقدد، بيض، بارميزان، كريمة"
+        },
+        "briocheBurger": {
+          "name": "برغر بريوش",
+          "description": "خبز بريوش، لحم مفروم، جبن، خضار"
+        },
+        "quicheLorraine": {
+          "name": "كيش لورين",
+          "description": "عجين مقرمش، لحم مقدد، بيض، كريمة طازجة"
+        }
+      },
+      "orderCall": "للطلب، اتصل بنا على",
+      "closeMenu": "إغلاق القائمة",
+      "topPick": "الاختيار الأول"
+    },
+    "gallery": {
+      "title": "المعرض"
+    },
+    "map": {
+      "title": "اعثر علينا",
+      "viewDirections": "عرض الاتجاهات على خرائط جوجل",
+      "location": "الموقع",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "parking": "مواقف السيارات",
+      "parkingAvailable": "مواقف سيارات متاحة بالقرب"
+    },
+    "hours": {
+      "title": "ساعات العمل",
+      "open": "نحن مفتوحون",
+      "days": {
+        "monday": "الاثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "weekend": "السبت - الأحد"
+      },
+      "times": {
+        "weekday": "7:00 صباحاً - 11:00 مساءً",
+        "weekend": "7:00 صباحاً - 12:00 ظهراً"
+      },
+      "info": "ساعات ممددة خلال العطل والمناسبات الخاصة"
+    },
+    "contact": {
+      "title": "اتصل بنا",
+      "visitUs": "زورونا",
+      "callUs": "اتصل بنا",
+      "emailUs": "راسلنا",
+      "form": {
+        "title": "أرسل لنا رسالة",
+        "email": "بريدك الإلكتروني",
+        "phone": "رقم الهاتف",
+        "inquiry": "نوع الاستفسار",
+        "message": "رسالتك",
+        "send": "إرسال الرسالة",
+        "sending": "جاري الإرسال...",
+        "sent": "تم إرسال الرسالة!",
+        "retry": "حاول مرة أخرى",
+        "inquiryTypes": {
+          "general": "استفسار عام",
+          "catering": "خدمات الطعام",
+          "bakery": "المخبز",
+          "pastry": "الحلويات",
+          "coffee": "القهوة",
+          "event": "مناسبة خاصة",
+          "delivery": "التوصيل",
+          "feedback": "تعليقات"
+        },
+        "success": "شكراً لك! تم إرسال رسالتك بنجاح.",
+        "successSubtext": "سنرد عليك قريباً على",
+        "error": "خطأ في الإرسال",
+        "callDirect": "أو اتصل بنا مباشرة على"
+      }
+    },
+    "footer": {
+      "tagline": "نصنع ذكريات لذيذة.",
+      "quickLinks": "روابط سريعة",
+      "followUs": "تابعونا",
+      "copyright": "جميع الحقوق محفوظة."
+    }
+  },
+  "es": {
+    "navigation": {
+      "home": "Inicio",
+      "about": "Sobre Nosotros",
+      "menu": "Menú",
+      "gallery": "Galería",
+      "location": "Ubicación",
+      "hours": "Horarios",
+      "contact": "Contacto"
+    },
+    "hero": {
+      "title": "La Brioche Blanche",
+      "description": "La Brioche Blanche abrió sus puertas en 2015, ofreciendo a nuestros clientes la mejor calidad en panadería, cocina deliciosa y hermoso café.",
+      "cta": "Sobre Nosotros"
+    },
+    "about": {
+      "title": "Sobre Nosotros",
+      "cards": {
+        "since2015": {
+          "title": "Desde 2015",
+          "description": "Desde que La Brioche Blanche abrió sus puertas en 2015, siempre es el primer lugar en el que piensan nuestros clientes, ya sea que quieran obsequiar pasteles a su familia o pasar tiempo de calidad con sus seres queridos."
+        },
+        "freshNatural": {
+          "title": "Fresco y Natural",
+          "description": "Ofreciendo la mejor calidad en nuestros productos, La Brioche Blanche selecciona cuidadosamente sus ingredientes para asegurar que sean frescos y naturales."
+        },
+        "community": {
+          "title": "Enfocado en la Comunidad",
+          "description": "La Brioche Blanche es más que una panadería - somos un lugar de encuentro donde los vecinos se hacen amigos alrededor de buena comida y café."
+        }
+      }
+    },
+    "menu": {
+      "title": "Nuestras Mejores Opciones",
+      "subtitle": "Descubre nuestra selección de productos más queridos por nuestros clientes. Sabores auténticos que forjan la reputación de La Brioche Blanche.",
+      "seeAll": "Ver Menú Completo",
+      "articles": "artículos",
+      "fullMenu": "Menú Completo",
+      "filters": {
+        "all": "Todo",
+        "breakfast": "Desayuno",
+        "drinks": "Bebidas",
+        "pastry": "Pastelería",
+        "dishes": "Platos Principales"
+      },
+      "items": {
+        "frenchBreakfast": {
+          "name": "Desayuno Francés",
+          "description": "Croissant, mermelada, mantequilla, café o té"
+        },
+        "continentalBreakfast": {
+          "name": "Desayuno Continental",
+          "description": "Pan, queso, huevo, jugo de naranja"
+        },
+        "completeBreakfast": {
+          "name": "Desayuno Completo",
+          "description": "Croissant, pan, mermelada, queso, huevo, bebida"
+        },
+        "msemenHoney": {
+          "name": "Msemen con Miel",
+          "description": "Msemen tradicional servido con miel y mantequilla"
+        },
+        "fruitCrepes": {
+          "name": "Crepes de Frutas",
+          "description": "Crepes frescos con frutas de temporada"
+        },
+        "chebakia": {
+          "name": "Chebakia Casera",
+          "description": "Pastelería tradicional con miel y sésamo"
+        },
+        "espresso": {
+          "name": "Café Espresso",
+          "description": "Café italiano servido en taza tradicional"
+        },
+        "cappuccino": {
+          "name": "Cappuccino",
+          "description": "Espresso con espuma de leche cremosa"
+        },
+        "mintTea": {
+          "name": "Té de Menta",
+          "description": "Té verde marroquí tradicional con menta fresca"
+        },
+        "freshOrange": {
+          "name": "Jugo de Naranja Fresco",
+          "description": "Jugo de naranja recién exprimido"
+        },
+        "fruitSmoothie": {
+          "name": "Batido de Frutas",
+          "description": "Mezcla de frutas frescas y yogur"
+        },
+        "vanillaMilkshake": {
+          "name": "Batido de Vainilla",
+          "description": "Batido cremoso de vainilla"
+        },
+        "butterCroissant": {
+          "name": "Croissant de Mantequilla",
+          "description": "Croissant francés clásico hecho en casa"
+        },
+        "painChocolat": {
+          "name": "Pain au Chocolat",
+          "description": "Hojaldre relleno de chocolate"
+        },
+        "chocolateEclair": {
+          "name": "Éclair de Chocolate",
+          "description": "Pasta choux rellena de crema pastelera y glaseado de chocolate"
+        },
+        "milleFeuille": {
+          "name": "Milhojas",
+          "description": "Hojaldre con crema pastelera de vainilla"
+        },
+        "fruitTart": {
+          "name": "Tarta de Frutas",
+          "description": "Tarta quebrada cubierta con frutas frescas de temporada"
+        },
+        "chouquettes": {
+          "name": "Chouquettes",
+          "description": "Pequeños choux dulces con perlas de azúcar"
+        },
+        "caesarSalad": {
+          "name": "Ensalada César",
+          "description": "Ensalada verde, pollo a la parrilla, parmesano, crutones"
+        },
+        "clubSandwich": {
+          "name": "Sándwich Club",
+          "description": "Pan de molde, pollo, tocino, lechuga, tomate"
+        },
+        "margheritaPizza": {
+          "name": "Pizza Margherita",
+          "description": "Salsa de tomate, mozzarella, albahaca fresca"
+        },
+        "carbonaraPasta": {
+          "name": "Pasta Carbonara",
+          "description": "Espaguetis, tocino, huevo, parmesano, nata"
+        },
+        "briocheBurger": {
+          "name": "Hamburguesa Brioche",
+          "description": "Pan brioche, carne molida, queso, vegetales"
+        },
+        "quicheLorraine": {
+          "name": "Quiche Lorraine",
+          "description": "Masa quebrada, tocino, huevos, nata fresca"
+        }
+      },
+      "orderCall": "Para ordenar, llámanos al",
+      "closeMenu": "Cerrar Menú",
+      "topPick": "MEJOR OPCIÓN"
+    },
+    "gallery": {
+      "title": "Galería"
+    },
+    "map": {
+      "title": "Encuéntranos",
+      "viewDirections": "Ver direcciones en Google Maps",
+      "location": "Ubicación",
+      "phone": "Teléfono",
+      "email": "Email",
+      "parking": "Estacionamiento",
+      "parkingAvailable": "Estacionamiento disponible cerca"
+    },
+    "hours": {
+      "title": "Horarios de Apertura",
+      "open": "Estamos abiertos",
+      "days": {
+        "monday": "Lunes",
+        "tuesday": "Martes",
+        "wednesday": "Miércoles",
+        "thursday": "Jueves",
+        "friday": "Viernes",
+        "weekend": "Sábado - Domingo"
+      },
+      "times": {
+        "weekday": "7:00 AM - 11:00 PM",
+        "weekend": "7:00 AM - 12:00 PM"
+      },
+      "info": "Horarios extendidos durante vacaciones y eventos especiales"
+    },
+    "contact": {
+      "title": "Contáctanos",
+      "visitUs": "Visítanos",
+      "callUs": "Llámanos",
+      "emailUs": "Envíanos un Email",
+      "form": {
+        "title": "Envíanos un mensaje",
+        "email": "Tu email",
+        "phone": "Número de teléfono",
+        "inquiry": "Tipo de consulta",
+        "message": "Tu mensaje",
+        "send": "Enviar mensaje",
+        "sending": "Enviando...",
+        "sent": "¡Mensaje enviado!",
+        "retry": "Intentar de nuevo",
+        "inquiryTypes": {
+          "general": "Consulta General",
+          "catering": "Catering",
+          "bakery": "Panadería",
+          "pastry": "Pastelería",
+          "coffee": "Café",
+          "event": "Evento Privado",
+          "delivery": "Entrega",
+          "feedback": "Comentarios"
+        },
+        "success": "¡Gracias! Tu mensaje ha sido enviado exitosamente.",
+        "successSubtext": "Te responderemos pronto a",
+        "error": "Error al enviar",
+        "callDirect": "O llámanos directamente al"
+      }
+    },
+    "footer": {
+      "tagline": "Creando recuerdos deliciosos.",
+      "quickLinks": "Enlaces Rápidos",
+      "followUs": "Síguenos",
+      "copyright": "Todos los derechos reservados."
+    }
+  }
+}

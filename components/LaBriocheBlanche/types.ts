@@ -1,14 +1,15 @@
+// components/LaBriocheBlanche/types.ts
 import { LucideIcon } from 'lucide-react';
 
 // Filter types for menu
 export type FilterType = 'all' | 'breakfast' | 'drinks' | 'pastry' | 'dishes';
 
-// Menu item interface
+// Menu item interface with translation keys
 export interface MenuItemData {
     id: number;
     category: 'breakfast' | 'drinks' | 'pastry' | 'dishes';
-    name: string;
-    description: string;
+    nameKey: string;        // Translation key for name
+    descriptionKey: string; // Translation key for description
     price: string;
     icon: LucideIcon;
 }
@@ -20,23 +21,23 @@ export interface GalleryItemData {
     gradient: string;
 }
 
-// About data interface
+// About data interface with translation keys
 export interface AboutData {
     icon: LucideIcon;
-    title: string;
-    description: string;
+    titleKey: string;       // Translation key for title
+    descriptionKey: string; // Translation key for description
 }
 
-// Schedule item interface
+// Schedule item interface with translation keys
 export interface ScheduleItem {
-    day: string;
+    dayKey: string;    // Translation key for day
     hours: string;
 }
 
-// Navigation item interface
+// Navigation item interface with translation keys
 export interface NavigationItem {
     id: string;
-    label: string;
+    labelKey: string;  // Translation key for label
 }
 
 // Form data interface
@@ -46,6 +47,9 @@ export interface FormData {
     inquiry: string;
     message: string;
 }
+
+// Language types
+export type Language = 'fr' | 'en' | 'ar' | 'es';
 
 // Component prop interfaces
 export interface NavigationProps {
@@ -62,6 +66,7 @@ export interface AboutCardProps {
     title: string;
     description: string;
     delay?: number;
+    isRTL?: boolean;
 }
 
 export interface MenuFilterProps {
@@ -105,4 +110,12 @@ export interface FooterProps {
 
 export interface ScrollToTopButtonProps {
     showScrollTop: boolean;
+}
+
+// Language context interface
+export interface LanguageContextType {
+    language: Language;
+    setLanguage: (lang: Language) => void;
+    t: (key: string) => string;
+    isRTL: boolean;
 }

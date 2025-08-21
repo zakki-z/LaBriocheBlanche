@@ -1,8 +1,13 @@
+// components/LaBriocheBlanche/Map/MapSection.tsx
+"use client"
 import React from 'react';
 import { MapPin, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../../../contexts/LanguageContext';
 import LocationInfo from './LocationInfo';
 
 const MapSection: React.FC = () => {
+    const { t, isRTL } = useLanguage();
+
     // Direct Google Maps link to your exact location
     const directMapLink = "https://maps.app.goo.gl/mZnSv4HhN1t7egha7";
 
@@ -13,12 +18,16 @@ const MapSection: React.FC = () => {
     return (
         <section id="map" className="py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="font-serif text-3xl lg:text-4xl font-bold text-center text-amber-900 mb-16">
-                    Trouvez-nous
+                <h2 className={`font-serif text-3xl lg:text-4xl font-bold text-center text-amber-900 mb-16 ${
+                    isRTL ? 'text-right' : ''
+                }`}>
+                    {t('map.title')}
                 </h2>
 
-                <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
+                <div className={`grid lg:grid-cols-3 gap-8 ${
+                    isRTL ? 'lg:grid-cols-3' : ''
+                }`}>
+                    <div className={`lg:col-span-2 ${isRTL ? 'lg:order-2' : ''}`}>
                         <div className="h-96 bg-gray-100 rounded-2xl overflow-hidden shadow-lg relative group">
                             {/* Interactive Google Maps Embed */}
                             <iframe
@@ -32,24 +41,28 @@ const MapSection: React.FC = () => {
                                 className="rounded-2xl"
                                 title="La Brioche Blanche - Boulevard al Maqdis 38, Oujda"
                             />
-
-                            {/* Floating location badge */}
                         </div>
+
                         {/* Direct link for mobile/accessibility */}
-                        <div className="mt-4 text-center">
+                        <div className={`mt-4 text-center ${isRTL ? 'text-right' : ''}`}>
                             <a
                                 href={directMapLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center space-x-2 text-amber-900 hover:text-orange-700 transition-colors duration-200 font-medium"
+                                className={`inline-flex items-center space-x-2 text-amber-900 hover:text-orange-700 transition-colors duration-200 font-medium ${
+                                    isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                                }`}
                             >
                                 <MapPin className="w-4 h-4" />
-                                <span>Voir l'itinéraire sur Google Maps</span>
+                                <span>{t('map.viewDirections')}</span>
                                 <ExternalLink className="w-4 h-4" />
                             </a>
                         </div>
                     </div>
-                    <LocationInfo />
+
+                    <div className={isRTL ? 'lg:order-1' : ''}>
+                        <LocationInfo />
+                    </div>
                 </div>
             </div>
         </section>
