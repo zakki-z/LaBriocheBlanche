@@ -1,7 +1,8 @@
-// components/LaBriocheBlanche/Navigation/Navigation.tsx
+// components/LaBriocheBlanche/Navigation/Navigation.tsx (Updated for better accessibility)
 "use client"
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { useLanguage } from '../../../contexts/LanguageContext';
 import LanguageSelector from '../../LanguageSelector/LanguageSelector';
 
@@ -35,14 +36,15 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
     };
 
     return (
-        <nav
+        <header
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${
                 navbarScrolled
                     ? 'bg-white/98 backdrop-blur-lg shadow-lg'
                     : 'bg-white/95 backdrop-blur-md shadow-md'
             }`}
+            role="banner"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Navigation principale">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <button
@@ -51,29 +53,36 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
                             isRTL ? 'flex-row-reverse space-x-reverse' : ''
                         }`}
                         type="button"
+                        aria-label="Retour à l'accueil"
                     >
-                        <img
+                        <Image
                             src="/labriocheblanche.jpg"
-                            alt="La Brioche Blanche logo"
-                            className="w-10 h-10 rounded-full shadow-lg"
+                            alt="Logo La Brioche Blanche"
+                            width={40}
+                            height={40}
+                            className="rounded-full shadow-lg"
+                            priority
                         />
                         <span className="font-serif">La Brioche Blanche</span>
                     </button>
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center space-x-8">
-                        <div className={`flex space-x-8 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                        <ul className={`flex space-x-8 ${isRTL ? 'flex-row-reverse space-x-reverse' : ''}`} role="menubar">
                             {navigationItems.map((item: NavigationItem) => (
-                                <button
-                                    key={item.id}
-                                    onClick={() => handleNavClick(item.id)}
-                                    className="text-gray-700 hover:text-amber-900 transition-colors duration-200 font-medium"
-                                    type="button"
-                                >
-                                    {t(item.labelKey)}
-                                </button>
+                                <li key={item.id} role="none">
+                                    <button
+                                        onClick={() => handleNavClick(item.id)}
+                                        className="text-gray-700 hover:text-amber-900 transition-colors duration-200 font-medium"
+                                        type="button"
+                                        role="menuitem"
+                                        aria-label={`Naviguer vers ${t(item.labelKey)}`}
+                                    >
+                                        {t(item.labelKey)}
+                                    </button>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
 
                         {/* Language Selector */}
                         <LanguageSelector />
@@ -86,12 +95,14 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="text-gray-700 hover:text-amber-900 transition-colors duration-200 p-2"
                             type="button"
-                            aria-label="Toggle mobile menu"
+                            aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls="mobile-menu"
                         >
                             {isMobileMenuOpen ? (
-                                <X className="w-6 h-6" />
+                                <X className="w-6 h-6" aria-hidden="true" />
                             ) : (
-                                <Menu className="w-6 h-6" />
+                                <Menu className="w-6 h-6" aria-hidden="true" />
                             )}
                         </button>
                     </div>
@@ -99,7 +110,12 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
-                    <div className="lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md">
+                    <div
+                        className="lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md"
+                        id="mobile-menu"
+                        role="menu"
+                        aria-label="Menu mobile"
+                    >
                         <div className="px-4 py-4 space-y-3">
                             {navigationItems.map((item: NavigationItem) => (
                                 <button
@@ -109,6 +125,8 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
                                         isRTL ? 'text-right' : 'text-left'
                                     }`}
                                     type="button"
+                                    role="menuitem"
+                                    aria-label={`Naviguer vers ${t(item.labelKey)}`}
                                 >
                                     {t(item.labelKey)}
                                 </button>
@@ -116,8 +134,8 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
                         </div>
                     </div>
                 )}
-            </div>
-        </nav>
+            </nav>
+        </header>
     );
 };
 

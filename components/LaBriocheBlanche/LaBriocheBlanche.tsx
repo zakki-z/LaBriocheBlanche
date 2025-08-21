@@ -1,24 +1,52 @@
 // components/LaBriocheBlanche/LaBriocheBlanche.tsx
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 // Import context
-import { LanguageProvider } from '../../contexts/LanguageContext';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 // Import types
 import { FilterType } from './types';
 
-// Import components
+// Core components (loaded immediately)
 import Navigation from './Navigation/Navigation';
 import HeroSection from './Hero/HeroSection';
-import AboutSection from "./About/AboutSection";
-import MenuSection from './Menu/MenuSection';
-import GallerySection from './Gallery/GallerySection';
-import MapSection from './Map/MapSection';
-import HoursSection from './Hours/HoursSection';
-import ContactSection from './Contact/ContactSection';
-import Footer from './Footer/Footer';
 import ScrollToTopButton from './ScrollToTop/ScrollToTopButton';
+import StructuredData from "@/StructuredData/StructuredData";
+
+// Lazy-loaded components (loaded when needed)
+const AboutSection = dynamic(() => import("./About/AboutSection"), {
+    loading: () => <div className="h-96 bg-yellow-50 animate-pulse" />
+});
+
+const MenuSection = dynamic(() => import('./Menu/MenuSection'), {
+    loading: () => <div className="h-96 bg-white animate-pulse" />
+});
+
+const GallerySection = dynamic(() => import('./Gallery/GallerySection'), {
+    loading: () => <div className="h-96 bg-yellow-50 animate-pulse" />
+});
+
+const MapSection = dynamic(() => import('./Map/MapSection'), {
+    loading: () => <div className="h-96 bg-white animate-pulse" />
+});
+
+const HoursSection = dynamic(() => import('./Hours/HoursSection'), {
+    loading: () => <div className="h-96 bg-yellow-50 animate-pulse" />
+});
+
+const ContactSection = dynamic(() => import('./Contact/ContactSection'), {
+    loading: () => <div className="h-96 bg-amber-900 animate-pulse" />
+});
+
+const Footer = dynamic(() => import('./Footer/Footer'), {
+    loading: () => <div className="h-48 bg-gray-900 animate-pulse" />
+});
+
+// Structured Data Component - Import directly since it's lightweight
+
 
 const LaBriocheBlancheContent: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -34,7 +62,7 @@ const LaBriocheBlancheContent: React.FC = () => {
             setShowScrollTop(scrollY > 500);
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -53,35 +81,62 @@ const LaBriocheBlancheContent: React.FC = () => {
     // Handle form submission
     const handleFormSubmit = (): void => {
         setIsFormSubmitting(true);
-
-        // Simulate form submission
         setTimeout(() => {
             setIsFormSubmitting(false);
         }, 2000);
     };
 
     return (
-        <div className="min-h-screen bg-white">
-            <Navigation
-                navbarScrolled={navbarScrolled}
-                scrollToSection={scrollToSection}
-            />
-            <HeroSection scrollToSection={scrollToSection} />
-            <AboutSection />
-            <MenuSection
-                activeFilter={activeFilter}
-                setActiveFilter={setActiveFilter}
-            />
-            <GallerySection />
-            <MapSection />
-            <HoursSection />
-            <ContactSection
-                isFormSubmitting={isFormSubmitting}
-                handleFormSubmit={handleFormSubmit}
-            />
-            <Footer scrollToSection={scrollToSection} />
-            <ScrollToTopButton showScrollTop={showScrollTop} />
-        </div>
+        <>
+            {/* Structured Data */}
+            <StructuredData type="organization" />
+            <StructuredData type="localBusiness" />
+            <StructuredData type="menu" />
+
+            <div className="min-h-screen bg-white">
+                <Navigation
+                    navbarScrolled={navbarScrolled}
+                    scrollToSection={scrollToSection}
+                />
+                <HeroSection scrollToSection={scrollToSection} />
+
+                <Suspense fallback={<div className="h-96 bg-yellow-50 animate-pulse" />}>
+                    <AboutSection />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-96 bg-white animate-pulse" />}>
+                    <MenuSection
+                        activeFilter={activeFilter}
+                        setActiveFilter={setActiveFilter}
+                    />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-96 bg-yellow-50 animate-pulse" />}>
+                    <GallerySection />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-96 bg-white animate-pulse" />}>
+                    <MapSection />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-96 bg-yellow-50 animate-pulse" />}>
+                    <HoursSection />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-96 bg-amber-900 animate-pulse" />}>
+                    <ContactSection
+                        isFormSubmitting={isFormSubmitting}
+                        handleFormSubmit={handleFormSubmit}
+                    />
+                </Suspense>
+
+                <Suspense fallback={<div className="h-48 bg-gray-900 animate-pulse" />}>
+                    <Footer scrollToSection={scrollToSection} />
+                </Suspense>
+
+                <ScrollToTopButton showScrollTop={showScrollTop} />
+            </div>
+        </>
     );
 };
 
