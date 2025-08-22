@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
             'images.unsplash.com', // If you use Unsplash
             'cdn.sanity.io', // If you use Sanity CMS
         ],
-        dangerouslyAllowSVG: true,
+        dangerouslyAllowSVG: false,
         contentDispositionType: 'attachment',
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         minimumCacheTTL: 60,

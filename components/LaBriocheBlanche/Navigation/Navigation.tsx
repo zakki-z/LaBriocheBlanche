@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import { useLanguage } from '../../../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from '../../LanguageSelector/LanguageSelector';
 
 interface NavigationItem {
@@ -55,14 +55,6 @@ const Navigation: React.FC<NavigationProps> = ({ navbarScrolled, scrollToSection
                         type="button"
                         aria-label="Retour à l'accueil"
                     >
-                        <Image
-                            src="/labriocheblanche.jpg"
-                            alt="Logo La Brioche Blanche"
-                            width={40}
-                            height={40}
-                            className="rounded-full shadow-lg"
-                            priority
-                        />
                         <span className="font-serif">La Brioche Blanche</span>
                     </button>
 

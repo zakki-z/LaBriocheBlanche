@@ -1,12 +1,13 @@
 // components/OptimizedImage.tsx
+"use client"
 import Image from 'next/image';
 import { useState } from 'react';
 
 interface OptimizedImageProps {
     src: string;
     alt: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     className?: string;
     priority?: boolean;
     sizes?: string;
@@ -17,17 +18,28 @@ interface OptimizedImageProps {
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
                                                            src,
                                                            alt,
-                                                           width,
-                                                           height,
+                                                           width = 0,
+                                                           height = 0,
                                                            className = '',
                                                            priority = false,
                                                            sizes,
                                                            fill = false,
                                                            quality = 85,
                                                        }) => {
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    // Validate required props
+    if (!src || src.trim() === '') {
+        console.warn('OptimizedImage: src prop is required and cannot be empty');
+        return null;
+    }
+
+    if (!alt || alt.trim() === '') {
+        console.warn('OptimizedImage: alt prop is required for accessibility');
+        return null;
+    }
+
+    // Consistent rendering for both server and client
     return (
         <div className={`relative overflow-hidden ${className}`}>
             {!error ? (
@@ -40,26 +52,14 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
                     priority={priority}
                     quality={quality}
                     sizes={sizes || '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
-                    className={`transition-opacity duration-300 ${
-                        isLoading ? 'opacity-0' : 'opacity-100'
-                    } ${fill ? 'object-cover' : ''}`}
-                    onLoad={() => setIsLoading(false)}
-                    onError={() => {
-                        setError(true);
-                        setIsLoading(false);
-                    }}
+                    className={fill ? 'object-cover' : ''}
+                    onError={() => setError(true)}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
             ) : (
-                <div className="flex items-center justify-center bg-gray-200 text-gray-500">
+                <div className="flex items-center justify-center bg-gray-200 text-gray-500 min-h-[200px]">
                     <span>Image failed to load</span>
-                </div>
-            )}
-
-            {isLoading && !error && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse">
-                    <div className="w-8 h-8 border-2 border-amber-900 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             )}
         </div>
