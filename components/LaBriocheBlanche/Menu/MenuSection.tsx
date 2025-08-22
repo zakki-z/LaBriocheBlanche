@@ -68,6 +68,11 @@ const MenuSection: React.FC<MenuSectionProps> = ({ activeFilter, setActiveFilter
         { key: 'dishes' as const, labelKey: 'menu.filters.dishes' }
     ];
 
+    // Now we actually use activeFilter and setActiveFilter props
+    const filteredItems = activeFilter === 'all'
+        ? topPicksItems
+        : topPicksItems.filter(item => item.category === activeFilter);
+
     const filteredPopupItems = popupFilter === 'all'
         ? allMenuItems
         : allMenuItems.filter(item => item.category === popupFilter);
@@ -114,9 +119,29 @@ const MenuSection: React.FC<MenuSectionProps> = ({ activeFilter, setActiveFilter
                         {t('menu.subtitle')}
                     </p>
 
-                    {/* Top Picks Grid */}
+                    {/* Filter buttons - Now properly using activeFilter and setActiveFilter */}
+                    <div className={`flex justify-center mb-12 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="flex flex-wrap gap-3">
+                            {filters.map((filter) => (
+                                <button
+                                    key={filter.key}
+                                    onClick={() => setActiveFilter(filter.key)}
+                                    className={`px-4 py-2 rounded-full font-medium transition-all duration-200 text-sm ${
+                                        activeFilter === filter.key
+                                            ? 'bg-amber-900 text-white shadow-md'
+                                            : 'border border-amber-900 text-amber-900 hover:bg-amber-50'
+                                    }`}
+                                    type="button"
+                                >
+                                    {t(filter.labelKey)}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Menu Items Grid - Shows filtered items based on activeFilter */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                        {topPicksItems.map((item) => (
+                        {filteredItems.map((item) => (
                             <MenuItem key={item.id} item={item} isTopPick={true} />
                         ))}
                     </div>

@@ -6,12 +6,8 @@ import { useLanguage } from '../../../contexts/LanguageContext';
 import ContactInfoCard from './ContactInfoCard';
 import ContactForm from './ContactForm';
 
-interface ContactSectionProps {
-    isFormSubmitting: boolean;
-    handleFormSubmit: () => void;
-}
-
-const ContactSection: React.FC<ContactSectionProps> = ({ isFormSubmitting, handleFormSubmit }) => {
+// Remove unused props interface since we're not using these props
+const ContactSection: React.FC = () => {
     const { t, isRTL } = useLanguage();
 
     return (

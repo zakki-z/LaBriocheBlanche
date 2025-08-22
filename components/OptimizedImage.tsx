@@ -1,7 +1,7 @@
 // components/OptimizedImage.tsx
 "use client"
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface OptimizedImageProps {
     src: string;
@@ -27,19 +27,44 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
                                                            quality = 85,
                                                        }) => {
     const [error, setError] = useState(false);
+    const [isClient, setIsClient] = useState(false);
 
-    // Validate required props
-    if (!src || src.trim() === '') {
-        console.warn('OptimizedImage: src prop is required and cannot be empty');
-        return null;
+    // Ensure we're on the client to prevent hydration mismatch
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    // Validate required props - but don't render differently on server vs client
+    const hasValidSrc = src && src.trim() !== '';
+    const hasValidAlt = alt && alt.trim() !== '';
+
+    if (!hasValidSrc) {
+        if (isClient) {
+            console.warn('OptimizedImage: src prop is required and cannot be empty');
+        }
+        return (
+            <div className={`relative overflow-hidden ${className}`}>
+                <div className="flex items-center justify-center bg-gray-200 text-gray-500 min-h-[200px]">
+                    <span>No image source</span>
+                </div>
+            </div>
+        );
     }
 
-    if (!alt || alt.trim() === '') {
-        console.warn('OptimizedImage: alt prop is required for accessibility');
-        return null;
+    if (!hasValidAlt) {
+        if (isClient) {
+            console.warn('OptimizedImage: alt prop is required for accessibility');
+        }
+        return (
+            <div className={`relative overflow-hidden ${className}`}>
+                <div className="flex items-center justify-center bg-gray-200 text-gray-500 min-h-[200px]">
+                    <span>Missing alt text</span>
+                </div>
+            </div>
+        );
     }
 
-    // Consistent rendering for both server and client
+    // Always render the same structure on server and client
     return (
         <div className={`relative overflow-hidden ${className}`}>
             {!error ? (

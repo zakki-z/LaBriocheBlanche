@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import Image from 'next/image';
 import { useLanguage } from '../../../contexts/LanguageContext';
 
 // Type definitions
@@ -106,11 +107,18 @@ const GallerySection: React.FC = () => {
         setSelectedImage(galleryItems[newIndex]);
     };
 
+    // Implement the handleVisitBakery function
     const handleVisitBakery = (): void => {
         if (typeof window !== 'undefined') {
-            const locationSection = document.getElementById('location');
-            if (locationSection) {
-                locationSection.scrollIntoView({ behavior: 'smooth' });
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Fallback: scroll to map section
+                const mapSection = document.getElementById('map');
+                if (mapSection) {
+                    mapSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
     };
@@ -157,7 +165,7 @@ const GallerySection: React.FC = () => {
                         </h2>
                     </div>
 
-                    {/* Gallery Grid */}
+                    {/* Gallery Grid - Using Next.js Image instead of <img> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {galleryItems.map((item: GalleryItemData, index: number) => (
                             <div
@@ -173,15 +181,17 @@ const GallerySection: React.FC = () => {
                                         </div>
                                     )}
 
-                                    {/* Image with SEO attributes but no visible titles */}
-                                    <img
+                                    {/* Next.js Image component */}
+                                    <Image
                                         src={item.src}
                                         alt={item.alt}
                                         title={item.title}
-                                        className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-110 ${
+                                        fill
+                                        className={`object-cover transition-all duration-300 group-hover:scale-110 ${
                                             imageLoaded[item.id] ? 'opacity-100' : 'opacity-0'
                                         }`}
-                                        loading={index < 4 ? "eager" : "lazy"}
+                                        priority={index < 4} // Load first 4 images with priority
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                         onLoad={() => handleImageLoad(item.id)}
                                     />
 
@@ -194,6 +204,16 @@ const GallerySection: React.FC = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Visit Bakery Button - Now using the handleVisitBakery function */}
+                    <div className="text-center mt-12">
+                        <button
+                            onClick={handleVisitBakery}
+                            className="bg-amber-900 hover:bg-amber-800 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 shadow-lg"
+                        >
+                            Visit Our Location
+                        </button>
                     </div>
                 </div>
             </section>
@@ -231,12 +251,16 @@ const GallerySection: React.FC = () => {
                             <ChevronRight size={24} />
                         </button>
 
-                        {/* Lightbox image */}
-                        <img
-                            src={selectedImage.src}
-                            alt={selectedImage.alt}
-                            className="max-w-full max-h-full object-contain rounded-lg"
-                        />
+                        {/* Lightbox image - Using Next.js Image */}
+                        <div className="relative w-full h-[80vh] max-w-4xl">
+                            <Image
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                fill
+                                className="object-contain rounded-lg"
+                                sizes="(max-width: 1200px) 100vw, 1200px"
+                            />
+                        </div>
                     </div>
                 </div>
             )}

@@ -2,7 +2,7 @@
 "use client"
 import React, { useState, useEffect, Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+// Remove unused Image import
 
 // Import context
 import { LanguageProvider } from '@/contexts/LanguageContext';
@@ -45,12 +45,8 @@ const Footer = dynamic(() => import('./Footer/Footer'), {
     loading: () => <div className="h-48 bg-gray-900 animate-pulse" />
 });
 
-// Structured Data Component - Import directly since it's lightweight
-
-
 const LaBriocheBlancheContent: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('all');
-    const [isFormSubmitting, setIsFormSubmitting] = useState<boolean>(false);
     const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
     const [navbarScrolled, setNavbarScrolled] = useState<boolean>(false);
 
@@ -76,14 +72,6 @@ const LaBriocheBlancheContent: React.FC = () => {
                 behavior: 'smooth'
             });
         }
-    };
-
-    // Handle form submission
-    const handleFormSubmit = (): void => {
-        setIsFormSubmitting(true);
-        setTimeout(() => {
-            setIsFormSubmitting(false);
-        }, 2000);
     };
 
     return (
@@ -124,10 +112,7 @@ const LaBriocheBlancheContent: React.FC = () => {
                 </Suspense>
 
                 <Suspense fallback={<div className="h-96 bg-amber-900 animate-pulse" />}>
-                    <ContactSection
-                        isFormSubmitting={isFormSubmitting}
-                        handleFormSubmit={handleFormSubmit}
-                    />
+                    <ContactSection />
                 </Suspense>
 
                 <Suspense fallback={<div className="h-48 bg-gray-900 animate-pulse" />}>
