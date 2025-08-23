@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { LocalBusinessSchema, MenuSchema, OrganizationSchema } from '@/components/StructuredData/LocalBusinessSchema';
+import { Analytics } from "@vercel/analytics/next"
 
 // Dynamic imports for performance optimization
 const LaBriocheBlanche = dynamic(() => import('@/components/LaBriocheBlanche/LaBriocheBlanche'), {
@@ -77,6 +78,7 @@ export default function HomePage() {
 
             <main role="main" className="min-h-screen">
                 <LaBriocheBlanche />
+                <Analytics />
             </main>
         </>
     );
