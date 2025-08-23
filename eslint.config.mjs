@@ -41,9 +41,9 @@ const eslintConfig = [
       "react-hooks/exhaustive-deps": "warn",
       // Prefer const over let when possible
       "prefer-const": "error",
-      // React specific rules
+      // React specific rules - allow common characters that are safe in JSX
       "react/no-unescaped-entities": ["error", {
-        "forbid": ["&", "<", ">", '"', "{", "}"]  // Allow apostrophes
+        "forbid": ["<", ">", "{", "}"]  // Allow apostrophes and ampersands in text
       }],
       // No unused imports
       "no-unused-imports": "off" // We'll handle this with TypeScript

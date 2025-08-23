@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { useLanguage } from '../../contexts/LanguageContext';
 
 const CookieConsent: React.FC = () => {
     const [showConsent, setShowConsent] = useState(false);
-    const { t } = useLanguage();
 
     useEffect(() => {
         const consent = localStorage.getItem('cookie-consent');
