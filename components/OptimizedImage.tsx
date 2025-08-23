@@ -39,7 +39,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     const hasValidAlt = alt && alt.trim() !== '';
 
     if (!hasValidSrc) {
-        if (isClient) {
+        if (isClient && process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
             console.warn('OptimizedImage: src prop is required and cannot be empty');
         }
         return (
@@ -52,7 +53,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     if (!hasValidAlt) {
-        if (isClient) {
+        if (isClient && process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
             console.warn('OptimizedImage: alt prop is required for accessibility');
         }
         return (

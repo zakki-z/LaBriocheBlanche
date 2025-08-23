@@ -31,3 +31,5 @@ const GoogleTagManager: React.FC<GoogleTagManagerProps> = ({ GTM_ID }) => {
         </>
     );
 };
+
+export default GoogleTagManager;

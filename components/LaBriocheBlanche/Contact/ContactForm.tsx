@@ -100,7 +100,11 @@ const ContactForm: React.FC = () => {
                 EMAILJS_CONFIG.PUBLIC_KEY
             );
 
-            console.log('Email sent successfully:', result);
+            // Only log in development
+            if (process.env.NODE_ENV === 'development') {
+                // eslint-disable-next-line no-console
+                console.log('Email sent successfully:', result);
+            }
             setSubmissionStatus('success');
 
             // Reset form after successful submission
@@ -114,19 +118,25 @@ const ContactForm: React.FC = () => {
                 setSubmissionStatus('idle');
             }, 5000);
 
-        } catch (error: any) {
-            console.error('EmailJS error:', error);
+        } catch (error: unknown) {
+            if (process.env.NODE_ENV === 'development') {
+                // eslint-disable-next-line no-console
+                console.error('EmailJS error:', error);
+            }
             setSubmissionStatus('error');
 
+            // Handle error properly with type checking
+            const errorObj = error as { text?: string; message?: string };
+
             // Provide user-friendly error messages
-            if (error?.text?.includes('Invalid') || error?.text?.includes('template')) {
+            if (errorObj?.text?.includes('Invalid') || errorObj?.text?.includes('template')) {
                 setErrorMessage('Configuration EmailJS incorrecte. Contactez l\'administrateur.');
-            } else if (error?.text?.includes('quota') || error?.text?.includes('limit')) {
+            } else if (errorObj?.text?.includes('quota') || errorObj?.text?.includes('limit')) {
                 setErrorMessage('Limite d\'envoi atteinte. Veuillez réessayer plus tard.');
             } else {
                 setErrorMessage(
-                    error?.text ||
-                    error?.message ||
+                    errorObj?.text ||
+                    errorObj?.message ||
                     'Erreur lors de l\'envoi du message. Veuillez réessayer.'
                 );
             }
@@ -199,7 +209,7 @@ const ContactForm: React.FC = () => {
                         <p className="text-yellow-700 font-medium">Configuration requise</p>
                     </div>
                     <p className={`text-yellow-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
-                        Veuillez configurer EmailJS pour activer l'envoi d'emails.
+                        Veuillez configurer EmailJS pour activer l&apos;envoi d&apos;emails.
                         <br />
                         <a
                             href="https://www.emailjs.com"

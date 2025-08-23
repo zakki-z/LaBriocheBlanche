@@ -26,3 +26,5 @@ const FacebookPixel: React.FC<FacebookPixelProps> = ({ PIXEL_ID }) => {
         />
     );
 };
+
+export default FacebookPixel;

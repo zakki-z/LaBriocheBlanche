@@ -80,3 +80,5 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ GA_TRACKING_ID }) => 
         </>
     );
 };
+
+export default GoogleAnalytics;
