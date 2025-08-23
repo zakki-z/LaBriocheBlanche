@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "postbuild": "next-sitemap",
@@ -34,7 +34,7 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=18.17.0",
     "npm": ">=8.0.0"
   }
 }

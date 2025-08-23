@@ -2,20 +2,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    // Enable experimental features for better performance
-    experimental: {
-        optimizeCss: true,
-        optimizeServerReact: true,
-        turbo: {
-            rules: {
-                '*.svg': {
-                    loaders: ['@svgr/webpack'],
-                    as: '*.js',
-                },
-            },
-        },
-    },
-
     // Image optimization configuration
     images: {
         formats: ['image/webp', 'image/avif'],
@@ -107,17 +93,22 @@ const nextConfig: NextConfig = {
         ];
     },
 
-    // Enable static generation
-    output: 'standalone',
+    // TypeScript configuration
+    typescript: {
+        ignoreBuildErrors: false,
+    },
 
-    // Bundle analyzer (uncomment for debugging)
-    // bundleAnalyzer: {
-    //   enabled: process.env.ANALYZE === 'true',
-    // },
+    // ESLint configuration
+    eslint: {
+        ignoreDuringBuilds: false,
+    },
+
+    // React strict mode
+    reactStrictMode: true,
 
     // Webpack optimizations
     webpack: (config, { dev, isServer }) => {
-        // Optimize bundles
+        // Optimize bundles for production
         if (!dev) {
             config.optimization.splitChunks = {
                 chunks: 'all',
@@ -146,25 +137,6 @@ const nextConfig: NextConfig = {
 
         return config;
     },
-
-    // TypeScript configuration
-    typescript: {
-        ignoreBuildErrors: false,
-    },
-
-    // ESLint configuration
-    eslint: {
-        ignoreDuringBuilds: false,
-    },
-
-    // Enable SWC minification
-    swcMinify: true,
-
-    // React strict mode
-    reactStrictMode: true,
-
-    // Generate static pages at build time
-    generateStaticParams: true,
 };
 
 export default nextConfig;
