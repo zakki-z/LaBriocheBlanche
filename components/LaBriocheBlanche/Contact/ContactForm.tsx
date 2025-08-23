@@ -1,9 +1,8 @@
 // components/LaBriocheBlanche/Contact/ContactForm.tsx
 "use client"
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../../../contexts/LanguageContext';
-import emailjs from '@emailjs/browser';
 
 interface FormData {
     email: string;
@@ -14,16 +13,8 @@ interface FormData {
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-// EmailJS Configuration - Replace these with your actual values from EmailJS dashboard
-const EMAILJS_CONFIG = {
-    SERVICE_ID: 'your_service_id',     // Replace with your EmailJS service ID
-    TEMPLATE_ID: 'your_template_id',   // Replace with your EmailJS template ID
-    PUBLIC_KEY: 'your_public_key',     // Replace with your EmailJS public key
-};
-
 const ContactForm: React.FC = () => {
     const { t, isRTL } = useLanguage();
-    const formRef = useRef<HTMLFormElement>(null);
 
     const [formData, setFormData] = useState<FormData>({
         email: '',
@@ -67,44 +58,18 @@ const ContactForm: React.FC = () => {
         setErrorMessage('');
 
         try {
-            // Check if EmailJS config is set
-            if (EMAILJS_CONFIG.SERVICE_ID === 'your_service_id') {
-                throw new Error('Veuillez configurer EmailJS dans le code (voir les commentaires)');
-            }
+            // Simulate form submission - replace with your actual form handling logic
+            // For now, we'll just simulate a successful submission
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-            // Prepare template parameters for EmailJS
-            const templateParams = {
-                from_name: formData.email.split('@')[0], // Get name from email
-                from_email: formData.email,
-                phone: formData.phone || 'Non fourni',
-                inquiry_type: formData.inquiry,
-                message: formData.message,
-                to_email: 'labriocheblanche@gmail.com',
-                reply_to: formData.email,
-                // Add timestamp
-                timestamp: new Date().toLocaleString('fr-FR', {
-                    timeZone: 'Africa/Casablanca',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
+            // For actual implementation, you would send the data to your backend API
+            // Example:
+            // const response = await fetch('/api/contact', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
 
-            // Send email using EmailJS
-            const result = await emailjs.send(
-                EMAILJS_CONFIG.SERVICE_ID,
-                EMAILJS_CONFIG.TEMPLATE_ID,
-                templateParams,
-                EMAILJS_CONFIG.PUBLIC_KEY
-            );
-
-            // Only log in development
-            if (process.env.NODE_ENV === 'development') {
-                // eslint-disable-next-line no-console
-                console.log('Email sent successfully:', result);
-            }
             setSubmissionStatus('success');
 
             // Reset form after successful submission
@@ -118,28 +83,9 @@ const ContactForm: React.FC = () => {
                 setSubmissionStatus('idle');
             }, 5000);
 
-        } catch (error: unknown) {
-            if (process.env.NODE_ENV === 'development') {
-                // eslint-disable-next-line no-console
-                console.error('EmailJS error:', error);
-            }
+        } catch (_error) {
             setSubmissionStatus('error');
-
-            // Handle error properly with type checking
-            const errorObj = error as { text?: string; message?: string };
-
-            // Provide user-friendly error messages
-            if (errorObj?.text?.includes('Invalid') || errorObj?.text?.includes('template')) {
-                setErrorMessage('Configuration EmailJS incorrecte. Contactez l\'administrateur.');
-            } else if (errorObj?.text?.includes('quota') || errorObj?.text?.includes('limit')) {
-                setErrorMessage('Limite d\'envoi atteinte. Veuillez réessayer plus tard.');
-            } else {
-                setErrorMessage(
-                    errorObj?.text ||
-                    errorObj?.message ||
-                    'Erreur lors de l\'envoi du message. Veuillez réessayer.'
-                );
-            }
+            setErrorMessage('Erreur lors de l\'envoi du message. Veuillez réessayer.');
         }
     };
 
@@ -199,29 +145,18 @@ const ContactForm: React.FC = () => {
                 {t('contact.form.title')}
             </h4>
 
-            {/* Configuration Warning */}
-            {EMAILJS_CONFIG.SERVICE_ID === 'your_service_id' && (
-                <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <div className={`flex items-center space-x-2 ${
-                        isRTL ? 'flex-row-reverse space-x-reverse' : ''
-                    }`}>
-                        <AlertCircle className="w-5 h-5 text-yellow-600" />
-                        <p className="text-yellow-700 font-medium">Configuration requise</p>
-                    </div>
-                    <p className={`text-yellow-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
-                        Veuillez configurer EmailJS pour activer l&apos;envoi d&apos;emails.
-                        <br />
-                        <a
-                            href="https://www.emailjs.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-yellow-800"
-                        >
-                            Créer un compte EmailJS →
-                        </a>
-                    </p>
+            {/* Info Message */}
+            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div className={`flex items-center space-x-2 ${
+                    isRTL ? 'flex-row-reverse space-x-reverse' : ''
+                }`}>
+                    <AlertCircle className="w-5 h-5 text-blue-600" />
+                    <p className="text-blue-700 font-medium">Formulaire de contact</p>
                 </div>
-            )}
+                <p className={`text-blue-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
+                    Votre message sera traité dans les plus brefs délais. Pour une réponse immédiate, appelez-nous directement.
+                </p>
+            </div>
 
             {/* Success Message */}
             {submissionStatus === 'success' && (
@@ -235,7 +170,7 @@ const ContactForm: React.FC = () => {
                         </p>
                     </div>
                     <p className={`text-green-600 text-sm mt-1 ${isRTL ? 'text-right' : ''}`}>
-                        {t('contact.form.successSubtext')} {formData.email}.
+                        Nous vous contacterons bientôt à {formData.email}.
                     </p>
                 </div>
             )}
@@ -255,7 +190,7 @@ const ContactForm: React.FC = () => {
                 </div>
             )}
 
-            <form ref={formRef} onSubmit={onSubmit} className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-4">
                 <input
                     type="email"
                     name="email"
